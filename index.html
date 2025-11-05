@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Fly Airlanes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        RoboTech
+        <div>fecha <span id="fecha"></span></div>
+        </header>
+
+        <div class="container">
+            <div class="panel">
+            <h2>Nuevo Robot</h2>
+            <div class="input-group">
+                <input type="text" name="numeroVuelo" id="numeroVuelo" placeholder="Numero de vuelo">
+                <input type="text" name="destinoVuelo" id="destinoVuelo" placeholder="Destino">
+                <button onclick="agregarVuelo()">Registrar Robot <i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div id="listaVuelos"></div>
+                <div class="card">
+                    <span>Atlas-X - Industrial - Estado: En desarrollo</span>
+                    <span>Medibot - Medico - Estado: Probado</span>
+                    <div class="actions">
+                        <button title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                        <button title="Eliminar"><i class="fa-solid fa-x"></i></button>
+                        <button title="Cambiar Estado"><i class="fa-solid fa-rotate"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container ">
+        <div class="panel">
+            <h2>Nuevo Ingeriero</h2>
+            <div class="input-group">
+                <input type="text" name="nombreIng" id="nombreIng" placeholder="Nombre del ingeniero">
+                <input type="text" name="EspecialidadIng" id="EspecialidadIng" placeholder="Especialidad (IA, Mecanica, Electronica)">
+                <button onclick="agregarVuelo()">Agregar ingeniero <i class="fa-solid fa-plus"></i></button>
+            </div>
+                <div id="vistaVuelos"></div>
+                    <div class="card">
+                    <span>Laura Vega - IA - Estado: Activo</span>
+                    <span>Marco Ruiz - Mecanico - Estado: Asignado</span>
+                        <div class="actions">
+                        <button title="Editar"><i class="fa-solid fa-pencil"></i></button>
+                        <button title="Eliminar"><i class="fa-solid fa-trash"></i></button>
+                        <button title="Cambiar Estado"><i class="fa-solid fa-rotate"></i></button>
+                        </div>
+                </div>
+        </div>
+    </div>
+
+<script src="index.js"></script>
+</body>
+</html>
