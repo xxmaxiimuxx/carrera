@@ -1,71 +1,139 @@
 const fechaHoy = new Date();
-const opciones= {day: '2-digit', month:'2-digit',year:'numeric'}
-document.getElementById('fecha').textContent =fechaHoy.toLocaleDateString('es-Es',opciones)
+const opciones = { day: '2-digit', month: '2-digit', year: 'numeric' };
+document.getElementById('fecha').textContent = fechaHoy.toLocaleDateString('es-ES', opciones);
 
-let vuelos =JSON.parse(localStorage.getItem('vuelos'))||[]
+let robots = JSON.parse(localStorage.getItem('robots')) || [];
 
-function guardarVuelos(){
-    localStorage.setItem('vuelos',JSON.stringify(vuelos))
+function guardarRobots() {
+    localStorage.setItem('robots', JSON.stringify(robots));
 }
 
-function mostrarVuelos(){
-    const lista = document.getElementById('listaVuelos')
-    lista.innerHTML='';
-    vuelos.forEach((vuelo,index) => {
-        const div = document.createElement('div')
-        div.className='card';
-        div.innerHTML=`
-        <span> Numero :${vuelo.numero} - Destino : ${vuelo.destino} -Estado: ${vuelo.estado}
-         <div class="actions">
-            <button onClick="editarVuelo(${index})"><i class="fa-solid fa-pencil"></i></button>
-            <button onClick="eliminarVuelo(${index})"><i class="fa-solid fa-x"></i></button>
-            <button onClick="cambiarEstado(${index})""><i class="fa-solid fa-rotate"></i></button>
+function mostrarRobots() {
+    const lista = document.getElementById('listaRobots');
+    lista.innerHTML = '';
+    robots.forEach((robot, index) => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+        <span>Código: ${robot.codigo} - Tipo: ${robot.tipo} - Estado: ${robot.estado}</span>
+        <div class="actions">
+            <button onClick="editarRobot(${index})"><i class="fa-solid fa-pencil"></i></button>
+            <button onClick="eliminarRobot(${index})"><i class="fa-solid fa-x"></i></button>
+            <button onClick="cambiarEstadoRobot(${index})"><i class="fa-solid fa-rotate"></i></button>
         </div>
-        `
+        `;
         lista.appendChild(div);
     });
 }
 
-function agregarVuelo(){
-    const numero = document.getElementById('mumeroRobot').value
-    const destino = document.getElementById('tipo').value
+function registrarRobot() {
+    const codigo = document.getElementById('codigoRobot').value;
+    const tipo = document.getElementById('tipoRobot').value;
 
-    if(numero && destino){
-        vuelos.push({numero,destino,estado:'programado'})
-        guardarVuelos();
-        mostrarVuelos();
-        document.getElementById('numeroVuelo').value=''
-        document.getElementById('destinoVuelo').value=''
+    if (codigo && tipo) {
+        robots.push({ codigo, tipo, estado: 'activo' });
+        guardarRobots();
+        mostrarRobots();
+        document.getElementById('codigoRobot').value = '';
+        document.getElementById('tipoRobot').value = '';
     }
 }
 
-function editarVuelo(index){
-    const vuelo= vuelos[index]
-    const nuevoVuelo= prompt('Nuevo numero de vuelo', vuelo.numero)
-    const nuevoDestino = prompt('Nuevo destino : ', vuelo.destino)
-    if(nuevoDestino&& nuevoVuelo){
-        vuelos[index].numero = nuevoVuelo;
-        vuelos[index].destino =nuevoDestino;
-        guardarVuelos()
-        mostrarVuelos()
+function editarRobot(index) {
+    const robot = robots[index];
+    const nuevoCodigo = prompt('Nuevo código del robot:', robot.codigo);
+    const nuevoTipo = prompt('Nuevo tipo de robot:', robot.tipo);
+    if (nuevoCodigo && nuevoTipo) {
+        robots[index].codigo = nuevoCodigo;
+        robots[index].tipo = nuevoTipo;
+        guardarRobots();
+        mostrarRobots();
     }
 }
 
-function eliminarVuelo(index){
-    if(confirm('Desea elminar el vuelo ?')){
-        vuelos.splice(index,1)
-        guardarVuelos();
-        mostrarVuelos();
+function eliminarRobot(index) {
+    if (confirm('¿Desea eliminar este robot?')) {
+        robots.splice(index, 1);
+        guardarRobots();
+        mostrarRobots();
     }
-
 }
 
-
-function cambiarEstado(index){
-    const estados =['programado','abordando','finalizado','cancelado']
-    let estadoActual =vuelos[index].estado
-    let nuevoEstado =estados[(estados.indexOf(estadoActual)+1) % estados.length]
-    vuelos[index].estado=nuevoEstado
-    guardarVuelos()
-    mostrarVuelos()
+function cambiarEstadoRobot(index) {
+    const estados = ['activo', 'en mantenimiento', 'inactivo'];
+    let estadoActual = robots[index].estado;
+    let nuevoEstado = estados[(estados.indexOf(estadoActual) + 1) % estados.length];
+    robots[index].estado = nuevoEstado;
+    guardarRobots();
+    mostrarRobots();
 }
+mostrarRobots();
+
+//usuario
+
+let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+function guardarUsuario() {
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+}
+
+function mostrarUsuario() {
+    const lista = document.getElementById('listaUsuario');
+    lista.innerHTML = '';
+    usuarios.forEach((usuario, index) => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+        <span>Nombre: ${usuario.nombre} - Especialidad: ${usuario.especialidad} - Estado: ${usuario.estado}</span>
+        <div class="actions">
+            <button onClick="editarUsuario(${index})"><i class="fa-solid fa-pencil"></i></button>
+            <button onClick="eliminarUsuario(${index})"><i class="fa-solid fa-x"></i></button>
+            <button onClick="cambiarEstadoUsuario(${index})"><i class="fa-solid fa-rotate"></i></button>
+        </div>
+        `;
+        lista.appendChild(div);
+    });
+}
+
+function registrarUsuario() {
+    const nombre  = document.getElementById('nombreIng').value;
+    const especialidad = document.getElementById('EspecialidadIng').value;
+
+    if (nombre && especialidad) {
+        usuarios.push({ nombre , especialidad , estado: 'Activo' });
+        guardarUsuario();
+        mostrarUsuario();
+        document.getElementById('nombreIng').value = '';
+        document.getElementById('EspecialidadIng').value = '';
+    }
+}
+
+function editarUsuario(index) {
+    const usuario = usuarios[index];
+    const nuevoNombre = prompt('Nuevo nombre del usuario:', usuario.nombre);
+    const nuevaEspecialidad  = prompt('Nuevo tipo de usuario:', usuario.especialidad);
+    if (nuevoNombre  && nuevaEspecialidad) {
+        usuarios[index].nombre = nuevoNombre;
+        usuarios[index].especialidad = nuevaEspecialidad;
+        guardarUsuario();
+        mostrarUsuario();
+    }
+}
+
+function eliminarUsuario(index) {
+    if (confirm('¿Desea eliminar este usuario?')) {
+        usuarios.splice(index, 1);
+        guardarUsuario();
+        mostrarUsuario();
+    }
+}
+
+function cambiarEstadoUsuario(index) {
+    const estados = ['activo', 'inactivo'];
+    let estadoActual = usuarios[index].estado;
+    let nuevoEstado = estados[(estados.indexOf(estadoActual) + 1) % estados.length];
+    usuarios[index].estado = nuevoEstado;
+    guardarUsuario();
+    mostrarUsuario();
+}
+mostrarUsuario();
