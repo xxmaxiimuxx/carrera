@@ -4,81 +4,104 @@ body {
     background-color: #252525;
     color: #ffffff;
 }
+
 header {
-    background-color: #1d1d1d;
-    color: rgb(40, 255, 51);
-    padding: 10px 10px;
+    background-color: #111;
+    color: #00ff9d;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 1.8em;
     letter-spacing: 1px;
+    border-bottom: 1px solid #00ff9d;
 }
+
 .container {
-    max-width: 1000px;
-    margin: 40px auto;
+    max-width: 900px;
+    margin: 30px auto;
     padding: 0 20px;
 }
+
 .panel {
     background-color: #3b3b3b;
-    border-left: 5px solid rgb(40, 255, 51);
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
+    border: 1px solid #00ff9d;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 12px #00ff9d40;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
 }
+
 h2 {
     margin-top: 0;
-    color: rgb(40, 255, 51);
-    font-size: 1.5em;
+    color: #00ff9d;
+    font-size: 1.4em;
+    text-align: center;
 }
+
 .input-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin-top: 10px;
     margin-bottom: 15px;
 }
-input {
-    padding: 10px;
-    border: 1px solid rgb(138, 138, 138);
-    border-radius: 6px;
+
+input, select {
+    background-color: #1a1a1a;
+    border: 1px solid #00ff9d80;
+    color: #00ffcc;
+    border-radius: 8px;
+    padding: 10px 12px;
     font-size: 1em;
-    background-color: black;
-    color: #ffffff;
+    transition: 0.2s ease;
 }
+
 button {
-    background-color: rgb(40, 255, 51);
-    color: black;
+    background-color: #00ff9d;
+    color: #000;
     border: none;
     padding: 10px;
     border-radius: 6px;
-    cursor: pointer;
     font-weight: bold;
     font-size: 1em;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
+
 button:hover {
-    background-color: #74b9ff;
+    background-color: #00ffaa;
+    box-shadow: 0 0 15px #00ff9d;
 }
+
 .card {
-    background-color: black;
-    border-left: 4px solid rgb(40, 255, 51);
+    background-color: #1a1a1a;
+    border-left: 4px solid #00ff9d;
     padding: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #00ff9d40;
 }
+
 .actions button {
-    background-color: transparent;
-    color: rgb(40, 255, 51);
+    background: transparent;
+    color: #00ff9d;
     border: none;
     margin-left: 10px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     cursor: pointer;
+    transition: 0.2s ease;
 }
+
 .actions button:hover {
-    color: #2d3436;
+    color: #00ffaa;
+    transform: scale(1.15);
 }
+
 @media (max-width: 768px) {
     .input-group {
         grid-template-columns: 1fr;
