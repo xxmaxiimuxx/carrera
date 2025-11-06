@@ -1,37 +1,38 @@
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky Fly Airlanes</title>
+    <title>RoboTech</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
 </head>
 <body>
     <header>
         RoboTech
-        <div>fecha <span id="fecha"></span></div>
-        </header>
+        <div>Fecha <span id="fecha"></span></div>
+    </header>
 
-        <div class="container">
-            <div class="panel">
-            <h2>Nuevo Robot</h2>
+    <div class="container">
+        <div class="panel">
+            <h2>Registrar Robot</h2>
             <div class="input-group">
-                <input type="text" name="numeroVuelo" id="numeroVuelo" placeholder="Numero de vuelo">
-                <input type="text" name="destinoVuelo" id="destinoVuelo" placeholder="Destino">
-                <button onclick="agregarVuelo()">Registrar Robot <i class="fa-solid fa-plus"></i></button>
+                <input type="text" name="codigoRobot" id="codigoRobot" placeholder="Código del robot">
+                <input type="text" name="tipoRobot" id="tipoRobot" placeholder="Tipo de robot">
+                <button onclick="registrarRobot()">Agregar Robot <i class="fa-solid fa-plus"></i></button>
             </div>
-            <div id="listaVuelos"></div>
-                <div class="card">
-                    <span>Atlas-X - Industrial - Estado: En desarrollo</span>
-                    <span>Medibot - Medico - Estado: Probado</span>
-                    <div class="actions">
-                        <button title="Editar"><i class="fa-solid fa-pencil"></i></button>
-                        <button title="Eliminar"><i class="fa-solid fa-x"></i></button>
-                        <button title="Cambiar Estado"><i class="fa-solid fa-rotate"></i></button>
-                    </div>
+
+            <div id="listaRobots"></div>
+
+            <div class="card">
+                <span>Robot RX001 - Tipo: Industrial - Estado: Activo</span>
+                <div class="actions">
+                    <button title="editarRobot"><i class="fa-solid fa-pencil"></i></button>
+                    <button title="eliminarRobot"><i class="fa-solid fa-trash"></i></button>
+                    <button title="cambiarEstadoRobot"><i class="fa-solid fa-rotate"></i></button>
                 </div>
             </div>
         </div>
+    </div>
 
     <div class="container ">
         <div class="panel">
@@ -39,21 +40,24 @@
             <div class="input-group">
                 <input type="text" name="nombreIng" id="nombreIng" placeholder="Nombre del ingeniero">
                 <input type="text" name="EspecialidadIng" id="EspecialidadIng" placeholder="Especialidad (IA, Mecanica, Electronica)">
-                <button onclick="agregarVuelo()">Agregar ingeniero <i class="fa-solid fa-plus"></i></button>
+                <button onclick="registrarUsuario()">Agregar Usuario <i class="fa-solid fa-plus"></i></button>
             </div>
-                <div id="vistaVuelos"></div>
+                <div id="listaUsuario"></div>
                     <div class="card">
                     <span>Laura Vega - IA - Estado: Activo</span>
-                    <span>Marco Ruiz - Mecanico - Estado: Asignado</span>
                         <div class="actions">
-                        <button title="Editar"><i class="fa-solid fa-pencil"></i></button>
-                        <button title="Eliminar"><i class="fa-solid fa-trash"></i></button>
-                        <button title="Cambiar Estado"><i class="fa-solid fa-rotate"></i></button>
+                        <button title="editarUsuario"><i class="fa-solid fa-pencil"></i></button>
+                        <button title="eliminarUsuario"><i class="fa-solid fa-trash"></i></button>
+                        <button title="cambiarEstadoUsuario"><i class="fa-solid fa-rotate"></i></button>
                         </div>
-                </div>
+                    </div>
         </div>
     </div>
 
+    <script src="index.js"></script>
+</body>
+</html>
 <script src="index.js"></script>
 </body>
+
 </html>
